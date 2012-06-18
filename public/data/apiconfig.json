@@ -1,0 +1,9 @@
+{
+    "cloudspokes": {
+        "name": "CloudSpokes API",
+        "protocol": "http",
+        "baseURL": "www.cloudspokes.com",
+        "publicPath": "",
+        "auth": ""
+    }
+}

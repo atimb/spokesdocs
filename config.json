@@ -1,0 +1,13 @@
+{
+    "title" : "Spokes Docs",
+    "address": "0.0.0.0",
+    "port" : 3000,
+    "debug" : false,
+    "sessionSecret" : "INSERT_HERE",
+    "redis" : {
+                "host" : "localhost",
+                "port" : 6379,
+                "password" : "INSERT_HERE",
+                "database" : "0"
+             }
+}

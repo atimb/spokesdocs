@@ -1,0 +1,437 @@
+{
+    "endpoints": [
+        {
+            "name": "Member List",
+            "methods": [
+                {
+                    "MethodName": "List",
+                    "Synopsis": "Returns 10 members from the specified page (unspecified order)",
+                    "HTTPMethod": "GET",
+                    "URI": "/members.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Order by Name List",
+                    "Synopsis": "Returns 10 members from the specified page ordered by member name",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_name.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Order by Win List",
+                    "Synopsis": "Returns 10 members from the specified page ordered by number of challenge wins",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_win.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Order by Activity List",
+                    "Synopsis": "Returns 10 members from the specified page ordered by member activity",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_active.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Search by Name List",
+                    "Synopsis": "Returns members matching the search string",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/search.json",
+                    "parameters": [
+                        {
+                            "Name": "keyword",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string",
+                            "Description": "Substring to search for in members"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Member Details",
+            "methods": [
+                {
+                    "MethodName": "Member Profile",
+                    "Synopsis": "Returns details of member specified",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/:name.json",
+                    "parameters": [
+                        {
+                            "Name": "name",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string",
+                            "Description": "Member name to retrieve profile for"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Member Active Challenges",
+                    "Synopsis": "Returns active challenges for member specified",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/:name/active_challenges.json",
+                    "parameters": [
+                        {
+                            "Name": "name",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string",
+                            "Description": "Member name to retrieve challenges for"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "Member Past Challenges",
+                    "Synopsis": "Returns past challenges for member specified",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/:name/past_challenges.json",
+                    "parameters": [
+                        {
+                            "Name": "name",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string",
+                            "Description": "Member name to retrieve challenges for"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Challenge List",
+            "methods": [
+                {
+                    "MethodName": "List",
+                    "Synopsis": "Returns details of 20 challenges matching the criteria from the specified page filtered by category",
+                    "HTTPMethod": "GET",
+                    "URI": "/challenges.json",
+                    "parameters": [
+                        {
+                            "Name": "category",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                                "Heroku",
+                                "Salesforce.com",
+                                "Google",
+                                "Box",
+                                "Mobile",
+                                "Node.JS",
+                                "Ruby",
+                                "JavaScript",
+                                "Java",
+                                "Other"
+                            ],
+                            "Description": "Category of challenge to filter for (if empty, do not filter)"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        },
+                        {
+                            "Name": "show",
+                            "Required": "Y",
+                            "Default": "open",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "open",
+                               "closed"
+                            ],
+                            "Description": "Return only active (open) or past (closed) challenges"
+                        },
+                        {
+                            "Name": "orderby",
+                            "Required": "Y",
+                            "Default": "name",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "name",
+                               "start_date__c",
+                               "end_date__c"
+                            ],
+                            "Description": "Order challenges by name, start date or end date"
+                        },
+                        {
+                            "Name": "orderby_dir",
+                            "Required": "Y",
+                            "Default": "asc",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "asc",
+                               "desc"
+                            ],
+                            "Description": "Order challenges ascending or descending order of 'orderby' parameter"
+                        }
+                        
+                    ]
+                },
+                {
+                    "MethodName": "Search by Name List",
+                    "Synopsis": "Returns details of 20 challenges matching the criteria from the specified page",
+                    "HTTPMethod": "GET",
+                    "URI": "/challenges.json",
+                    "parameters": [
+                        {
+                            "Name": "keyword",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string",
+                            "Description": "Substring to search for in challenges"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        },
+                        {
+                            "Name": "show",
+                            "Required": "Y",
+                            "Default": "open",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "open",
+                               "closed"
+                            ],
+                            "Description": "Return only active (open) or past (closed) challenges"
+                        },
+                        {
+                            "Name": "orderby",
+                            "Required": "Y",
+                            "Default": "name",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "name",
+                               "start_date__c",
+                               "end_date__c"
+                            ],
+                            "Description": "Order challenges by name, start date or end date"
+                        },
+                        {
+                            "Name": "orderby_dir",
+                            "Required": "Y",
+                            "Default": "asc",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                               "asc",
+                               "desc"
+                            ],
+                            "Description": "Order challenges ascending or descending order of 'orderby' parameter"
+                        }
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Challenge Details",
+            "methods": [
+                {
+                    "MethodName": "Challenge Details",
+                    "Synopsis": "Returns details of a specific challenge",
+                    "HTTPMethod": "GET",
+                    "URI": "/challenges/:id.json",
+                    "parameters": [
+                        {
+                            "Name": "id",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Challenge ID"
+                        }                        
+                    ]
+                },
+                {
+                    "MethodName": "Challenge Registrants Details",
+                    "Synopsis": "Returns details about registrants of a specific challenge",
+                    "HTTPMethod": "GET",
+                    "URI": "/challenges/:id/registrants.json",
+                    "parameters": [
+                        {
+                            "Name": "id",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Challenge ID"
+                        }                        
+                    ]
+                }
+                
+            ]
+        },
+        {
+            "name": "Leaderboards",
+            "methods": [
+                {
+                    "MethodName": "This Month's List",
+                    "Synopsis": "Returns members from the specified page of the monthly leaderboard",
+                    "HTTPMethod": "GET",
+                    "URI": "/leaderboard_this_month.json",
+                    "parameters": [
+                        {
+                            "Name": "category",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                                "Heroku",
+                                "Salesforce.com",
+                                "Google",
+                                "Box",
+                                "Mobile",
+                                "Node.JS",
+                                "Ruby",
+                                "JavaScript",
+                                "Java",
+                                "Other"
+                            ],
+                            "Description": "Category of challenge to filter for (if empty, do not filter)"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        },
+                        {
+                            "Name": "per_page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Number of records to retrieve (if not specified, returns 10 per page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "This Year's List",
+                    "Synopsis": "Returns members from the specified page of the yearly leaderboard",
+                    "HTTPMethod": "GET",
+                    "URI": "/leaderboard_this_year.json",
+                    "parameters": [
+                        {
+                            "Name": "category",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                                "Heroku",
+                                "Salesforce.com",
+                                "Google",
+                                "Box",
+                                "Mobile",
+                                "Node.JS",
+                                "Ruby",
+                                "JavaScript",
+                                "Java",
+                                "Other"
+                            ],
+                            "Description": "Category of challenge to filter for (if empty, do not filter)"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        },
+                        {
+                            "Name": "per_page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Number of records to retrieve (if not specified, returns 10 per page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "All Time List",
+                    "Synopsis": "Returns members from the specified page of the all-time leaderboard",
+                    "HTTPMethod": "GET",
+                    "URI": "/leaderboard_all_time.json",
+                    "parameters": [
+                        {
+                            "Name": "category",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "enumerated",
+                            "EnumeratedList": [
+                                "Heroku",
+                                "Salesforce.com",
+                                "Google",
+                                "Box",
+                                "Mobile",
+                                "Node.JS",
+                                "Ruby",
+                                "JavaScript",
+                                "Java",
+                                "Other"
+                            ],
+                            "Description": "Category of challenge to filter for (if empty, do not filter)"
+                        },
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        },
+                        {
+                            "Name": "per_page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Number of records to retrieve (if not specified, returns 10 per page)"
+                        }
+                    ]
+                }
+            ]
+        }
+        
+    ]
+}
