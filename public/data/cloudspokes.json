@@ -19,52 +19,7 @@
                     ]
                 },
                 {
-                    "MethodName": "Order by Name List",
-                    "Synopsis": "Returns 10 members from the specified page ordered by member name",
-                    "HTTPMethod": "GET",
-                    "URI": "/members/order_by_name.json",
-                    "parameters": [
-                        {
-                            "Name": "page",
-                            "Required": "N",
-                            "Default": "",
-                            "Type": "number",
-                            "Description": "Page number (if not specified, returns first page)"
-                        }
-                    ]
-                },
-                {
-                    "MethodName": "Order by Win List",
-                    "Synopsis": "Returns 10 members from the specified page ordered by number of challenge wins",
-                    "HTTPMethod": "GET",
-                    "URI": "/members/order_by_win.json",
-                    "parameters": [
-                        {
-                            "Name": "page",
-                            "Required": "N",
-                            "Default": "",
-                            "Type": "number",
-                            "Description": "Page number (if not specified, returns first page)"
-                        }
-                    ]
-                },
-                {
-                    "MethodName": "Order by Activity List",
-                    "Synopsis": "Returns 10 members from the specified page ordered by member activity",
-                    "HTTPMethod": "GET",
-                    "URI": "/members/order_by_active.json",
-                    "parameters": [
-                        {
-                            "Name": "page",
-                            "Required": "N",
-                            "Default": "",
-                            "Type": "number",
-                            "Description": "Page number (if not specified, returns first page)"
-                        }
-                    ]
-                },
-                {
-                    "MethodName": "Search by Name List",
+                    "MethodName": "List filtered by name",
                     "Synopsis": "Returns members matching the search string",
                     "HTTPMethod": "GET",
                     "URI": "/members/search.json",
@@ -84,6 +39,51 @@
                             "Description": "Page number (if not specified, returns first page)"
                         }
                     ]
+                },
+                {
+                    "MethodName": "List ordered by name",
+                    "Synopsis": "Returns 10 members from the specified page ordered by member name",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_name.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "List ordered by win",
+                    "Synopsis": "Returns 10 members from the specified page ordered by number of challenge wins",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_win.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
+                },
+                {
+                    "MethodName": "List ordered by activity",
+                    "Synopsis": "Returns 10 members from the specified page ordered by member activity",
+                    "HTTPMethod": "GET",
+                    "URI": "/members/order_by_active.json",
+                    "parameters": [
+                        {
+                            "Name": "page",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "number",
+                            "Description": "Page number (if not specified, returns first page)"
+                        }
+                    ]
                 }
             ]
         },
@@ -91,7 +91,7 @@
             "name": "Member Details",
             "methods": [
                 {
-                    "MethodName": "Member Profile",
+                    "MethodName": "Member's profile",
                     "Synopsis": "Returns details of member specified",
                     "HTTPMethod": "GET",
                     "URI": "/members/:name.json",
@@ -106,7 +106,7 @@
                     ]
                 },
                 {
-                    "MethodName": "Member Active Challenges",
+                    "MethodName": "Member's active challenges",
                     "Synopsis": "Returns active challenges for member specified",
                     "HTTPMethod": "GET",
                     "URI": "/members/:name/active_challenges.json",
@@ -121,7 +121,7 @@
                     ]
                 },
                 {
-                    "MethodName": "Member Past Challenges",
+                    "MethodName": "Member's past challenges",
                     "Synopsis": "Returns past challenges for member specified",
                     "HTTPMethod": "GET",
                     "URI": "/members/:name/past_challenges.json",
@@ -142,7 +142,7 @@
             "methods": [
                 {
                     "MethodName": "List",
-                    "Synopsis": "Returns details of 20 challenges matching the criteria from the specified page filtered by category",
+                    "Synopsis": "Returns 20 challenges matching the criteria from the specified page filtered by category",
                     "HTTPMethod": "GET",
                     "URI": "/challenges.json",
                     "parameters": [
@@ -210,8 +210,8 @@
                     ]
                 },
                 {
-                    "MethodName": "Search by Name List",
-                    "Synopsis": "Returns details of 20 challenges matching the criteria from the specified page",
+                    "MethodName": "List filtered by name",
+                    "Synopsis": "Returns 20 challenges matching the criteria from the specified page",
                     "HTTPMethod": "GET",
                     "URI": "/challenges.json",
                     "parameters": [
@@ -272,7 +272,7 @@
             "name": "Challenge Details",
             "methods": [
                 {
-                    "MethodName": "Challenge Details",
+                    "MethodName": "Challenge details",
                     "Synopsis": "Returns details of a specific challenge",
                     "HTTPMethod": "GET",
                     "URI": "/challenges/:id.json",
@@ -287,7 +287,7 @@
                     ]
                 },
                 {
-                    "MethodName": "Challenge Registrants Details",
+                    "MethodName": "Challenge registrants details",
                     "Synopsis": "Returns details about registrants of a specific challenge",
                     "HTTPMethod": "GET",
                     "URI": "/challenges/:id/registrants.json",
@@ -308,7 +308,7 @@
             "name": "Leaderboards",
             "methods": [
                 {
-                    "MethodName": "This Month's List",
+                    "MethodName": "This month's list",
                     "Synopsis": "Returns members from the specified page of the monthly leaderboard",
                     "HTTPMethod": "GET",
                     "URI": "/leaderboard_this_month.json",
@@ -349,7 +349,7 @@
                     ]
                 },
                 {
-                    "MethodName": "This Year's List",
+                    "MethodName": "This year's list",
                     "Synopsis": "Returns members from the specified page of the yearly leaderboard",
                     "HTTPMethod": "GET",
                     "URI": "/leaderboard_this_year.json",
@@ -390,7 +390,7 @@
                     ]
                 },
                 {
-                    "MethodName": "All Time List",
+                    "MethodName": "All time list",
                     "Synopsis": "Returns members from the specified page of the all-time leaderboard",
                     "HTTPMethod": "GET",
                     "URI": "/leaderboard_all_time.json",
